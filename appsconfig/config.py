@@ -12,11 +12,11 @@ Default values can be stored in conf/default and will be loaded first.
 
 Create different environments as subdirectories of conf/
 
-By default, the environment used will be 'production'.
+By default, the environment used will be 'local'.
 
 You can load a different environment by running:
 
-ENV=local python manage.py runserver
+ENV=production python manage.py runserver
 
 Variables that can be used in the configuration files:
 
@@ -115,7 +115,7 @@ def settings():
     You can call execfile() from settings.py on the return value if it is
     not None.
     """
-    environment = os.environ.get('ENV', 'production')
+    environment = os.environ.get('ENV', 'local')
     loader = Loader()
     return loader.settings(environment)
 
@@ -126,7 +126,7 @@ def load():
 
     @rtype: L{ExpandingConfigParser}
     """
-    environment = os.environ.get('ENV', 'production')
+    environment = os.environ.get('ENV', 'local')
 
     loader = Loader()
     return loader.load(environment)

@@ -4,13 +4,13 @@ USAGE
 - Check out the appsconfig/ directory in the root of your Django tree.
 - Create a "conf/" directory in the root of your Django tree.
 - Under "conf/", create one directory per environment.  The default
-  environment is "production".
+  environment is "local".
 - For each application, create a "(app).conf" configuration file.
 - Default values for applications go in "conf/default/(app).conf"
 - Each environment can create a settings.py file that will execute
   after the root settings.py
 - You can load a different environment by running:
-  ENV=local python manage.py runserver
+  ENV=production python manage.py runserver
 - Variables that can be used in the configuration files:
   - environment: the directory of the environment being loaded
 - In the root settings.py, load the config with:
