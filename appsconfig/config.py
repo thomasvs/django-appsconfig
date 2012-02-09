@@ -103,9 +103,9 @@ class Loader(object):
 
     def log(self, message, *args):
         if args:
-            print message % args
+            print >> sys.stderr, message % args
         else:
-            print message
+            print >> sys.stderr, message
 
 def settings():
     """
