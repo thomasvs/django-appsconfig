@@ -107,7 +107,10 @@ class Loader(object):
         else:
             print >> sys.stderr, message
 
-def settings():
+def get_environment():
+    return os.environ.get('ENV', 'local')
+
+def settings(environment=None):
     """
     Return the settings file to be loaded additionally for the configured
     environment.
@@ -115,18 +118,20 @@ def settings():
     You can call execfile() from settings.py on the return value if it is
     not None.
     """
-    environment = os.environ.get('ENV', 'local')
+    if not environment:
+        environment = get_environment()
     loader = Loader()
     return loader.settings(environment)
 
-def load():
+def load(environment=None):
     """
     Load settings files to be loaded additionally for the configured
     environment.
 
     @rtype: L{ExpandingConfigParser}
     """
-    environment = os.environ.get('ENV', 'local')
+    if not environment:
+        environment = get_environment()
 
     loader = Loader()
     return loader.load(environment)
